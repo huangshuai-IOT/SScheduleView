@@ -36,14 +36,14 @@ open class SScheduleView: UIView {
             resetLayout()
         }
     }
-    
+
     /// 顶部日期栏 View 背景色
     @IBInspectable var headViewBackgroundColor: UIColor = SScheduleTheme.BlankAreaColor {
         didSet {
             resetLayout()
         }
     }
-    
+
     /// 侧边时间栏 View 背景色
     @IBInspectable var sideViewBackgroundColor: UIColor = SScheduleTheme.BlankAreaColor {
         didSet {

@@ -124,6 +124,25 @@ open func setTermStartDate(with dateString:String)
 open func clearOldCourseView() 
 ```
 
+## Peek & Pop
+
+```swift
+extension viewController:UIViewControllerPreviewingDelegate {
+    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        if let model = scheduleView.getDataModel(with: self.view.convert(location, to: self.scheduleView)) {
+          // return previewVC
+        }
+        
+        return nil
+    }
+    
+    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
+    }
+}
+```
+
 ## 联系我
 - 微博: [黄帅IOT](http://weibo.com/u/2189929640)
 - 博客: https://huangshuai-iot.github.io/

@@ -81,11 +81,11 @@ open class SScheduleView: UIView {
     fileprivate var datesOfMonth:[String]!
     
     /// 顶部 View
-    fileprivate var headView:UIView!
+    public var headView:UIView!
     /// 侧边课程节数 View
-    fileprivate var sideView:UIView!
+    public var sideView:UIView!
     /// 课程内容 View
-    fileprivate var contentView:UIView!
+    public var contentView:UIView!
     
     /// 设置一周显示的天数
     ///
@@ -146,6 +146,19 @@ open class SScheduleView: UIView {
     
     open func setCourseViewIsCornor(_ isCornor:Bool) {
         
+    }
+    
+    /// 根据Location获取CourseDataModel
+    ///
+    /// - Parameter location: location in SSCheduleView
+    /// - Returns: SScheduleViewModelProtocol
+    open func getDataModel(with location: CGPoint) -> SScheduleViewModelProtocol? {
+        for view in contentView.subviews {
+            if view.frame.contains(location) && view is SScheduleCourseView{
+                return (view as! SScheduleCourseView).model
+            }
+        }
+        return nil
     }
     
     /**
@@ -356,42 +369,15 @@ open class SScheduleView: UIView {
     open func updateCourseView() {
         for data in courseDataList {
             /* 设置课程格子的背景View */
-            let courseBackView = UIView()
-            courseBackView.isUserInteractionEnabled = true
+            let courseBackView = SScheduleCourseView()
+            courseBackView.delegate = self
+            courseBackView.setupUI(with: data)
             contentView.addSubview(courseBackView)
             courseBackView.snp.makeConstraints{
                 $0.width.equalTo(notFirstEveryColumnsWidth)
                 $0.height.equalTo(notFirstEveryRowHeight * CGFloat(data.getSpan()))
                 $0.left.equalTo(contentView).offset(notFirstEveryColumnsWidth * CGFloat(data.getDay() - 1))
                 $0.top.equalTo(contentView).offset(notFirstEveryRowHeight * CGFloat(data.getJieci() - 1))
-            }
-            
-            /* 设置课程格子显示Button */
-            let courseInfoButton = UIButton()
-            courseInfoButton.setTitle(data.getCourseName() + "\n" + data.getClassRoom(), for: UIControlState.normal)
-            courseInfoButton.titleLabel?.font = UIFont.systemFont(ofSize: 10)
-            
-            courseInfoButton.contentHorizontalAlignment = .center
-            courseInfoButton.contentVerticalAlignment = .center
-            courseInfoButton.contentEdgeInsets = UIEdgeInsetsMake(1, 2, 1, 2)
-            courseInfoButton.titleLabel?.numberOfLines = 0
-            courseInfoButton.backgroundColor = data.getBackColor() ?? SScheduleTheme.flatColors[randomInRange(0..<17)].color
-            
-            // 绑定课程Button的data数据，点击时进行传递
-            courseInfoButton.tag = courseDataList.index(where: { (item) -> Bool in
-                if (  item.getJieci() == data.getJieci() && item.getDay() == data.getDay() ) {
-                    return true
-                } else{
-                    return false
-                }
-            })!
-            
-            // 增加课程点击事件
-            courseInfoButton.addTarget(self, action: #selector(self.courseInfoButtonTouch(sender:)), for: UIControlEvents.touchUpInside)
-            
-            courseBackView.addSubview(courseInfoButton)
-            courseInfoButton.snp.makeConstraints{
-                $0.edges.equalTo(courseBackView).inset(UIEdgeInsetsMake(1, 1, 1, 1))
             }
         }
     }
@@ -410,14 +396,16 @@ open class SScheduleView: UIView {
         }
     }
     
-    @objc fileprivate func courseInfoButtonTouch(sender:UIButton) {
-        delegate?.tapCourse(courseModel: courseDataList[sender.tag])
-    }
-    
     /// 更新表头View
     fileprivate func updateHeadView() {
         headView.removeFromSuperview()
         drawFirstRow()
+    }
+}
+
+extension SScheduleView:SScheduleCourseViewProtocol {
+    public func tapCourse(courseModel:SScheduleViewModelProtocol) {
+        delegate?.tapCourse(courseModel: courseModel)
     }
 }
 

@@ -193,6 +193,14 @@ open class SScheduleView: UIView {
     
     fileprivate func initUI() {
         initUISize()
+        
+        let backImg = UIImageView()
+        backImg.image = UIImage(named: "back")
+        addSubview(backImg)
+        backImg.snp.makeConstraints{
+            $0.left.top.right.bottom.equalTo(self)
+        }
+        
         drawFirstRow()
         drawOtherRows()
         addContentViewGesture()
@@ -210,7 +218,8 @@ open class SScheduleView: UIView {
     /// 绘制第一行表头UI
     open func drawFirstRow() {
         headView = UIView()
-        headView.backgroundColor = headViewBackgroundColor
+        headView.backgroundColor = UIColor.clear
+        //headView.backgroundColor = headViewBackgroundColor
         addSubview(headView)
         headView.snp.makeConstraints{
             $0.left.top.right.equalTo(self)
@@ -311,7 +320,7 @@ open class SScheduleView: UIView {
     /// - Parameter scrollView:
     open func drawOtherRowFirstCol(scrollView:UIScrollView) {
         sideView = UIView()
-        sideView.backgroundColor = sideViewBackgroundColor
+        sideView.backgroundColor = UIColor.clear
         scrollView.addSubview(sideView)
         sideView.snp.makeConstraints{
             $0.left.equalTo(self)

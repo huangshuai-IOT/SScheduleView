@@ -1,0 +1,22 @@
+PODS:
+  - MJRefresh (3.1.12)
+  - SnapKit (3.2.0)
+  - SScheduleView (0.2.0):
+    - MJRefresh
+    - SnapKit (~> 3.0)
+
+DEPENDENCIES:
+  - SScheduleView (from `../`)
+
+EXTERNAL SOURCES:
+  SScheduleView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SScheduleView: e096d67452b4fe0cc34d14e1b78c01696e19dc98
+
+PODFILE CHECKSUM: cb3529d9fe1059e55e570c0251f6f9c119f15a36
+
+COCOAPODS: 1.2.1.beta.1

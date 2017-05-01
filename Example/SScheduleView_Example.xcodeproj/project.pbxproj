@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2736EBBD1EB0D38A00F3FFEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2736EBBC1EB0D38A00F3FFEA /* AppDelegate.swift */; };
+		2736EBBF1EB0D38A00F3FFEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2736EBBE1EB0D38A00F3FFEA /* ViewController.swift */; };
+		2736EBC21EB0D38A00F3FFEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2736EBC01EB0D38A00F3FFEA /* Main.storyboard */; };
+		2736EBC41EB0D38A00F3FFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2736EBC31EB0D38A00F3FFEA /* Assets.xcassets */; };
+		2736EBC71EB0D38A00F3FFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2736EBC51EB0D38A00F3FFEA /* LaunchScreen.storyboard */; };
+		2736EC271EB3909A00F3FFEA /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2736EC261EB3909A00F3FFEA /* CourseModel.swift */; };
+		2736EC291EB3927D00F3FFEA /* Extension_UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2736EC281EB3927D00F3FFEA /* Extension_UIColor.swift */; };
+		7A547EC77835E76CCCCAF389 /* Pods_SScheduleView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F05DC9BAC252F542C15923 /* Pods_SScheduleView_Example.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2736EBB91EB0D38A00F3FFEA /* SScheduleView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SScheduleView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2736EBBC1EB0D38A00F3FFEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2736EBBE1EB0D38A00F3FFEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2736EBC11EB0D38A00F3FFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2736EBC31EB0D38A00F3FFEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2736EBC61EB0D38A00F3FFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2736EBC81EB0D38A00F3FFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2736EC261EB3909A00F3FFEA /* CourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
+		2736EC281EB3927D00F3FFEA /* Extension_UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension_UIColor.swift; path = Util/Extension_UIColor.swift; sourceTree = "<group>"; };
+		48F05DC9BAC252F542C15923 /* Pods_SScheduleView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SScheduleView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58A3971BB18B62A8F9F133F4 /* Pods-SScheduleView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SScheduleView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SScheduleView_Example/Pods-SScheduleView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5B39B8328AADDC9C37B6505A /* Pods-SScheduleView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SScheduleView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SScheduleView_Example/Pods-SScheduleView_Example.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2736EBB61EB0D38A00F3FFEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A547EC77835E76CCCCAF389 /* Pods_SScheduleView_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2279AB596EA48461447F097C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48F05DC9BAC252F542C15923 /* Pods_SScheduleView_Example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2736EBB01EB0D38900F3FFEA = {
+			isa = PBXGroup;
+			children = (
+				2736EBBB1EB0D38A00F3FFEA /* SScheduleView_Example */,
+				2736EBBA1EB0D38A00F3FFEA /* Products */,
+				582843ED987DE071FAD5BADA /* Pods */,
+				2279AB596EA48461447F097C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2736EBBA1EB0D38A00F3FFEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2736EBB91EB0D38A00F3FFEA /* SScheduleView_Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2736EBBB1EB0D38A00F3FFEA /* SScheduleView_Example */ = {
+			isa = PBXGroup;
+			children = (
+				2736EBBC1EB0D38A00F3FFEA /* AppDelegate.swift */,
+				2736EC261EB3909A00F3FFEA /* CourseModel.swift */,
+				2736EBBE1EB0D38A00F3FFEA /* ViewController.swift */,
+				2736EBC01EB0D38A00F3FFEA /* Main.storyboard */,
+				2736EC2A1EB3928300F3FFEA /* Util */,
+				2736EBC31EB0D38A00F3FFEA /* Assets.xcassets */,
+				2736EBC51EB0D38A00F3FFEA /* LaunchScreen.storyboard */,
+				2736EBC81EB0D38A00F3FFEA /* Info.plist */,
+			);
+			path = SScheduleView_Example;
+			sourceTree = "<group>";
+		};
+		2736EC2A1EB3928300F3FFEA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2736EC281EB3927D00F3FFEA /* Extension_UIColor.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		582843ED987DE071FAD5BADA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				58A3971BB18B62A8F9F133F4 /* Pods-SScheduleView_Example.debug.xcconfig */,
+				5B39B8328AADDC9C37B6505A /* Pods-SScheduleView_Example.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2736EBB81EB0D38A00F3FFEA /* SScheduleView_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2736EBCB1EB0D38A00F3FFEA /* Build configuration list for PBXNativeTarget "SScheduleView_Example" */;
+			buildPhases = (
+				9D77F5830141559597C82B0F /* [CP] Check Pods Manifest.lock */,
+				2736EBB51EB0D38A00F3FFEA /* Sources */,
+				2736EBB61EB0D38A00F3FFEA /* Frameworks */,
+				2736EBB71EB0D38A00F3FFEA /* Resources */,
+				4FCA8BE670475B774231A0D9 /* [CP] Embed Pods Frameworks */,
+				FCC1686FE6D7DE24C360692B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SScheduleView_Example;
+			productName = SScheduleView_Example;
+			productReference = 2736EBB91EB0D38A00F3FFEA /* SScheduleView_Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2736EBB11EB0D38900F3FFEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = huangshuai;
+				TargetAttributes = {
+					2736EBB81EB0D38A00F3FFEA = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 4TMDS6SP73;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2736EBB41EB0D38900F3FFEA /* Build configuration list for PBXProject "SScheduleView_Example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2736EBB01EB0D38900F3FFEA;
+			productRefGroup = 2736EBBA1EB0D38A00F3FFEA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2736EBB81EB0D38A00F3FFEA /* SScheduleView_Example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2736EBB71EB0D38A00F3FFEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2736EBC71EB0D38A00F3FFEA /* LaunchScreen.storyboard in Resources */,
+				2736EBC41EB0D38A00F3FFEA /* Assets.xcassets in Resources */,
+				2736EBC21EB0D38A00F3FFEA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4FCA8BE670475B774231A0D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SScheduleView_Example/Pods-SScheduleView_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D77F5830141559597C82B0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FCC1686FE6D7DE24C360692B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SScheduleView_Example/Pods-SScheduleView_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2736EBB51EB0D38A00F3FFEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2736EC271EB3909A00F3FFEA /* CourseModel.swift in Sources */,
+				2736EBBF1EB0D38A00F3FFEA /* ViewController.swift in Sources */,
+				2736EBBD1EB0D38A00F3FFEA /* AppDelegate.swift in Sources */,
+				2736EC291EB3927D00F3FFEA /* Extension_UIColor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2736EBC01EB0D38A00F3FFEA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2736EBC11EB0D38A00F3FFEA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2736EBC51EB0D38A00F3FFEA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2736EBC61EB0D38A00F3FFEA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2736EBC91EB0D38A00F3FFEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2736EBCA1EB0D38A00F3FFEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2736EBCC1EB0D38A00F3FFEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58A3971BB18B62A8F9F133F4 /* Pods-SScheduleView_Example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4TMDS6SP73;
+				INFOPLIST_FILE = SScheduleView_Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huangshuai.SScheduleView-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2736EBCD1EB0D38A00F3FFEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B39B8328AADDC9C37B6505A /* Pods-SScheduleView_Example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4TMDS6SP73;
+				INFOPLIST_FILE = SScheduleView_Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huangshuai.SScheduleView-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2736EBB41EB0D38900F3FFEA /* Build configuration list for PBXProject "SScheduleView_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2736EBC91EB0D38A00F3FFEA /* Debug */,
+				2736EBCA1EB0D38A00F3FFEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2736EBCB1EB0D38A00F3FFEA /* Build configuration list for PBXNativeTarget "SScheduleView_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2736EBCC1EB0D38A00F3FFEA /* Debug */,
+				2736EBCD1EB0D38A00F3FFEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2736EBB11EB0D38900F3FFEA /* Project object */;
+}

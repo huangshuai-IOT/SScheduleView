@@ -28,8 +28,9 @@ open class SScheduleCourseView: UIView {
     
     open func setupUI(with model:SScheduleViewModelProtocol) {
         self.model = model
-        
+        self.backgroundColor = UIColor.clear
         let courseBackView = UIView()
+        courseBackView.backgroundColor = UIColor.clear
         courseBackView.isUserInteractionEnabled = true
         addSubview(courseBackView)
         courseBackView.snp.makeConstraints{
@@ -38,6 +39,7 @@ open class SScheduleCourseView: UIView {
         
         /* 设置课程格子显示Button */
         let courseInfoButton = UIButton()
+        courseInfoButton.alpha = 0.8
         courseInfoButton.setTitle(self.model.getCourseName() + "\n" + self.model.getClassRoom(), for: UIControlState.normal)
         courseInfoButton.titleLabel?.font = UIFont.systemFont(ofSize: 10)
         
@@ -54,6 +56,15 @@ open class SScheduleCourseView: UIView {
         courseInfoButton.snp.makeConstraints{
             $0.edges.equalTo(courseBackView).inset(UIEdgeInsetsMake(1, 1, 1, 1))
         }
+        
+        let testView = UIView()
+        testView.alpha = 0.5
+        testView.backgroundColor = self.model.getBackColor() ?? SScheduleTheme.flatColors[randomInRange(0..<17)].color
+        
+//        addSubview(testView)
+//        testView.snp.makeConstraints{
+//            $0.edges.equalTo(courseBackView).inset(UIEdgeInsetsMake(1, 1, 1, 1))
+//        }
     }
     
     @objc fileprivate func courseInfoButtonTouch(sender:UIButton) {

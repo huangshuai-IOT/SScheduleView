@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2736EC251EB38ED400F3FFEA /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2736EC241EB38ED400F3FFEA /* Media.xcassets */; };
 		27640D6C1E896683008E0061 /* SScheduleCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27640D6B1E896683008E0061 /* SScheduleCourseView.swift */; };
+		27870A5F1EB71F5B00F8D7A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27870A5E1EB71F5B00F8D7A6 /* Extensions.swift */; };
+		27A281B01EBACD63000AFAF0 /* SScheduleSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A281AF1EBACD63000AFAF0 /* SScheduleSettingView.swift */; };
 		27B1FDE31E817442008542A7 /* SScheduleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B1FDE11E817442008542A7 /* SScheduleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B1FDFC1E827BD4008542A7 /* SScheduleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1FDF91E827BD4008542A7 /* SScheduleScrollView.swift */; };
 		27B1FDFD1E827BD4008542A7 /* SScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1FDFA1E827BD4008542A7 /* SScheduleView.swift */; };
@@ -18,8 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2736EC241EB38ED400F3FFEA /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		27640D6B1E896683008E0061 /* SScheduleCourseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SScheduleCourseView.swift; path = Classes/SScheduleCourseView.swift; sourceTree = "<group>"; };
+		27870A5E1EB71F5B00F8D7A6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Classes/Util/Extensions.swift; sourceTree = "<group>"; };
+		27A281AF1EBACD63000AFAF0 /* SScheduleSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SScheduleSettingView.swift; path = Classes/SScheduleSettingView.swift; sourceTree = "<group>"; };
 		27B1FDDE1E817442008542A7 /* SScheduleView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SScheduleView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B1FDE11E817442008542A7 /* SScheduleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SScheduleView.h; sourceTree = "<group>"; };
 		27B1FDE21E817442008542A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27870A5D1EB71F2700F8D7A6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				27870A5E1EB71F5B00F8D7A6 /* Extensions.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		27B1FDD41E817442008542A7 = {
 			isa = PBXGroup;
 			children = (
@@ -68,7 +78,6 @@
 				27B1FDF81E827BB4008542A7 /* Classes */,
 				27B1FDE11E817442008542A7 /* SScheduleView.h */,
 				27B1FDE21E817442008542A7 /* Info.plist */,
-				2736EC241EB38ED400F3FFEA /* Media.xcassets */,
 			);
 			path = SScheduleView;
 			sourceTree = "<group>";
@@ -76,11 +85,13 @@
 		27B1FDF81E827BB4008542A7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				27870A5D1EB71F2700F8D7A6 /* Util */,
 				27B1FDF91E827BD4008542A7 /* SScheduleScrollView.swift */,
 				27640D6B1E896683008E0061 /* SScheduleCourseView.swift */,
 				27B1FDFA1E827BD4008542A7 /* SScheduleView.swift */,
 				27B1FDFB1E827BD4008542A7 /* SScheduleTheme.swift */,
 				27B1FDFF1E82878F008542A7 /* SScheduleUIColorExtensions.swift */,
+				27A281AF1EBACD63000AFAF0 /* SScheduleSettingView.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -175,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2736EC251EB38ED400F3FFEA /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B1FE001E82878F008542A7 /* SScheduleUIColorExtensions.swift in Sources */,
+				27870A5F1EB71F5B00F8D7A6 /* Extensions.swift in Sources */,
+				27A281B01EBACD63000AFAF0 /* SScheduleSettingView.swift in Sources */,
 				27640D6C1E896683008E0061 /* SScheduleCourseView.swift in Sources */,
 				27B1FDFC1E827BD4008542A7 /* SScheduleScrollView.swift in Sources */,
 				27B1FDFD1E827BD4008542A7 /* SScheduleView.swift in Sources */,

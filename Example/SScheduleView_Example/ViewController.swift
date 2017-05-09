@@ -25,8 +25,11 @@ class ViewController: UIViewController {
         scheduleView.setTermStartDate(with: StartDate)
         scheduleView.setWeekIsShow(with: false)
         scheduleView.delegate = self
-        
+        scheduleView.setBackground(with: UIImage(named: "back")!)
+        scheduleView.setCourseViewsAlpha(with: 1)
         initData()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +47,7 @@ class ViewController: UIViewController {
         thisWeekCourse.append(course1)
         
         scheduleView.updateCourseView(courseDataList: thisWeekCourse)
+        scheduleView.setCourseViewsAlpha(with:0.5)
     }
 }
 

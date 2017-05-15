@@ -149,8 +149,16 @@ open class SScheduleView: UIView {
         updateCourseView()
     }
     
-    open func setCourseViewIsCornor(_ isCornor:Bool) {
-        
+    fileprivate var courseViewIsCorner:Bool = false
+    
+    /// 设置课程格子圆角 (cornerRadius是固定的10，TODO可修改)
+    ///
+    /// - Parameter isCorner:isCorner
+    open func setCourseViewIsCorner(_ isCorner:Bool) {
+        for course in courseViewList {
+            self.courseViewIsCorner = isCorner
+            course.courseInfoIsCorner = isCorner
+        }
     }
     
     /// 根据Location获取CourseDataModel
@@ -166,11 +174,17 @@ open class SScheduleView: UIView {
         return nil
     }
     
+    fileprivate var backImg:UIImage?
     /// 设置背景图
     ///
     /// - Parameter image: 背景图
     open func setBackground(with image:UIImage?) {
-        if let backImage = image {
+        backImg = image
+        setBackground()
+    }
+    
+    fileprivate func setBackground() {
+        if let backImage = backImg {
             self.headView.backgroundColor = headViewBackgroundColor.withAlphaComponent(0.2)
             self.sideView.backgroundColor = sideViewBackgroundColor.withAlphaComponent(0.2)
             self.backImageView.image = backImage
@@ -181,12 +195,19 @@ open class SScheduleView: UIView {
         }
     }
     
+    fileprivate  var courseViewAlpha:CGFloat = 1.0
+    
+    /// 设置课程格子的透明度（优化背景效果）
+    ///
+    /// - Parameter value: alpha
     open func setCourseViewsAlpha(with value:CGFloat) {
         guard value > 0.0 && value <= 1.0 else {
             return
         }
         
-        for course in  courseViewList {
+        courseViewAlpha = value
+        
+        for course in courseViewList {
             course.courseInfoAlpha = value
         }
     }
@@ -233,6 +254,8 @@ open class SScheduleView: UIView {
         drawFirstRow()
         drawOtherRows()
         addContentViewGesture()
+        
+        setBackground()
     }
     
     /// 设置UI的各个Size
@@ -438,6 +461,8 @@ open class SScheduleView: UIView {
                 $0.left.equalTo(contentView).offset(notFirstEveryColumnsWidth * CGFloat(data.getDay() - 1))
                 $0.top.equalTo(contentView).offset(notFirstEveryRowHeight * CGFloat(data.getJieci() - 1))
             }
+            courseBackView.courseInfoAlpha = self.courseViewAlpha
+            courseBackView.courseInfoIsCorner = self.courseViewIsCorner
         }
     }
     

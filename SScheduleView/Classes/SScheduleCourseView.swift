@@ -24,6 +24,12 @@ open class SScheduleCourseView: UIView {
         }
     }
     
+    public var courseInfoIsCorner:Bool = false {
+        didSet {
+            courseInfoButton.layer.cornerRadius = courseInfoIsCorner ? 10 : 0
+        }
+    }
+    
     weak var delegate:SScheduleCourseViewProtocol?
     
     override init(frame: CGRect) {

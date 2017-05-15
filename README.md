@@ -15,6 +15,8 @@ School ScheduleView for iOS, pure swift.
 - Dynamically set the weekend course display
 - Dynamic changes show course
 
+![Demo](https://github.com/huangshuai-IOT/SScheduleView/blob/master/demo.gif)
+
 ## Requirements
 - iOS 8 +
 - Xcode 8 

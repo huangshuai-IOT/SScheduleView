@@ -13,6 +13,7 @@ iOS 课程表控件，方便快速集成。
 ## 介绍
 本项目基于 UIKit 使用 Swift3 绘制的课程表控件，方便快速集成。
 
+![Demo](https://github.com/huangshuai-IOT/SScheduleView/blob/master/demo.gif)
 ## 功能
 - 根据课程周显示本周日期
 - 支持左右手势滑动

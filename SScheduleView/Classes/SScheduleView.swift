@@ -86,6 +86,11 @@ open class SScheduleView: UIView {
     public var sideView:UIView!
     /// 课程内容 View
     public var contentView:UIView!
+    /// 课程内容View集合，用来统一修改背景的Alpha
+    public var courseViewList = Array<SScheduleCourseView>()
+    
+    /// 背景ImageView
+    public var backImageView:UIImageView!
     
     /// 设置一周显示的天数
     ///
@@ -144,8 +149,16 @@ open class SScheduleView: UIView {
         updateCourseView()
     }
     
-    open func setCourseViewIsCornor(_ isCornor:Bool) {
-        
+    fileprivate var courseViewIsCorner:Bool = false
+    
+    /// 设置课程格子圆角 (cornerRadius是固定的10，TODO可修改)
+    ///
+    /// - Parameter isCorner:isCorner
+    open func setCourseViewIsCorner(_ isCorner:Bool) {
+        for course in courseViewList {
+            self.courseViewIsCorner = isCorner
+            course.courseInfoIsCorner = isCorner
+        }
     }
     
     /// 根据Location获取CourseDataModel
@@ -159,6 +172,44 @@ open class SScheduleView: UIView {
             }
         }
         return nil
+    }
+    
+    fileprivate var backImg:UIImage?
+    /// 设置背景图
+    ///
+    /// - Parameter image: 背景图
+    open func setBackground(with image:UIImage?) {
+        backImg = image
+        setBackground()
+    }
+    
+    fileprivate func setBackground() {
+        if let backImage = backImg {
+            self.headView.backgroundColor = headViewBackgroundColor.withAlphaComponent(0.2)
+            self.sideView.backgroundColor = sideViewBackgroundColor.withAlphaComponent(0.2)
+            self.backImageView.image = backImage
+        } else {
+            self.headView.backgroundColor = headViewBackgroundColor
+            self.sideView.backgroundColor = sideViewBackgroundColor
+            self.backImageView.image = nil
+        }
+    }
+    
+    fileprivate  var courseViewAlpha:CGFloat = 1.0
+    
+    /// 设置课程格子的透明度（优化背景效果）
+    ///
+    /// - Parameter value: alpha
+    open func setCourseViewsAlpha(with value:CGFloat) {
+        guard value > 0.0 && value <= 1.0 else {
+            return
+        }
+        
+        courseViewAlpha = value
+        
+        for course in courseViewList {
+            course.courseInfoAlpha = value
+        }
     }
     
     /**
@@ -194,16 +245,17 @@ open class SScheduleView: UIView {
     fileprivate func initUI() {
         initUISize()
         
-        let backImg = UIImageView()
-        backImg.image = UIImage(named: "back")
-        addSubview(backImg)
-        backImg.snp.makeConstraints{
+        backImageView = UIImageView()
+        addSubview(backImageView)
+        backImageView.snp.makeConstraints{
             $0.left.top.right.bottom.equalTo(self)
         }
         
         drawFirstRow()
         drawOtherRows()
         addContentViewGesture()
+        
+        setBackground()
     }
     
     /// 设置UI的各个Size
@@ -218,8 +270,8 @@ open class SScheduleView: UIView {
     /// 绘制第一行表头UI
     open func drawFirstRow() {
         headView = UIView()
-        headView.backgroundColor = UIColor.clear
-        //headView.backgroundColor = headViewBackgroundColor
+        headView.backgroundColor = headViewBackgroundColor
+        
         addSubview(headView)
         headView.snp.makeConstraints{
             $0.left.top.right.equalTo(self)
@@ -237,15 +289,25 @@ open class SScheduleView: UIView {
         scrollView.snp.makeConstraints{
             $0.top.equalTo(self).offset(firstRowHeight)
             $0.right.left.bottom.equalTo(self)
+            $0.width.equalTo(self.snp.width)
         }
         
-        drawOtherRowFirstCol(scrollView: scrollView)
-        drawOtherRowOtherCol(scrollView: scrollView)
+        // 用来约束ScrollView Content Size
+        let scrollCotentView = UIView()
+        scrollView.addSubview(scrollCotentView)
+        scrollCotentView.snp.makeConstraints{
+            $0.edges.equalTo(scrollView)
+            $0.center.equalTo(scrollView)
+        }
+        
+        drawOtherRowFirstCol(scrollCotentView: scrollCotentView)
+        drawOtherRowOtherCol(scrollCotentView: scrollCotentView)
     }
     
     /// 绘制第一行第一列,即当前周数和月份
     open func drawFirstRowFirstColCell() {
         let view = UIView()
+        view.backgroundColor = UIColor.clear
         headView.addSubview(view)
         view.snp.makeConstraints {
             $0.left.top.bottom.equalTo(headView)
@@ -254,6 +316,7 @@ open class SScheduleView: UIView {
         
         if isShowWeekNum {
             let weekNumLabel = UILabel()
+            weekNumLabel.backgroundColor = UIColor.clear
             weekNumLabel.text = "第\(showWeekNum)周"
             weekNumLabel.font = UIFont.boldSystemFont(ofSize: 10)
             view.addSubview(weekNumLabel)
@@ -264,6 +327,7 @@ open class SScheduleView: UIView {
         }
         
         let monthNumLabel = UILabel()
+        monthNumLabel.backgroundColor = UIColor.clear
         monthNumLabel.text = getMonth(startTermDate: termStartDate, week: showWeekNum) + "月"
         monthNumLabel.font = UIFont.systemFont(ofSize: 10)
         view.addSubview(monthNumLabel)
@@ -318,27 +382,35 @@ open class SScheduleView: UIView {
     // 绘制其他行第一列,即sideView,课程节数列
     ///
     /// - Parameter scrollView:
-    open func drawOtherRowFirstCol(scrollView:UIScrollView) {
+    open func drawOtherRowFirstCol(scrollCotentView:UIView) {
         sideView = UIView()
-        sideView.backgroundColor = UIColor.clear
-        scrollView.addSubview(sideView)
+        sideView.backgroundColor = sideViewBackgroundColor.withAlphaComponent(0.2)
+        scrollCotentView.addSubview(sideView)
         sideView.snp.makeConstraints{
-            $0.left.equalTo(self)
-            $0.top.bottom.equalTo(scrollView)
+            $0.left.top.bottom.equalTo(scrollCotentView)
             $0.width.equalTo(firstColumnWidth)
             $0.height.equalTo(notFirstEveryRowHeight * showJiesNum)
         }
         
         for i in 0 ..< Int(showJiesNum) {
-            let jieciLabel = UILabel()
-            jieciLabel.text = "\(i+1)"
-            jieciLabel.font = UIFont.systemFont(ofSize: 10)
-            jieciLabel.textAlignment = NSTextAlignment.center
-            sideView.addSubview(jieciLabel)
-            jieciLabel.snp.makeConstraints{
+            let jieciBackView = UIView()
+            jieciBackView.backgroundColor = UIColor.clear
+            sideView.addSubview(jieciBackView)
+            jieciBackView.snp.makeConstraints{
                 $0.top.equalTo(sideView.snp.top).offset(notFirstEveryRowHeight * CGFloat(i))
                 $0.right.left.equalTo(sideView)
                 $0.height.equalTo(notFirstEveryRowHeight)
+            }
+            
+            let jieciLabel = UILabel()
+            jieciLabel.backgroundColor = UIColor.clear
+            jieciLabel.text = "\(i+1)"
+            jieciLabel.textColor = UIColor.black
+            jieciLabel.font = UIFont.systemFont(ofSize: 10)
+            jieciLabel.textAlignment = NSTextAlignment.center
+            jieciBackView.addSubview(jieciLabel)
+            jieciLabel.snp.makeConstraints{
+                $0.top.bottom.right.left.equalTo(jieciBackView)
             }
             
             let seperateView = UIView()
@@ -346,7 +418,7 @@ open class SScheduleView: UIView {
             sideView.addSubview(seperateView)
             seperateView.snp.makeConstraints{
                 $0.height.equalTo(0.5)
-                $0.top.right.left.equalTo(jieciLabel)
+                $0.top.right.left.equalTo(jieciBackView)
             }
         }
     }
@@ -354,11 +426,11 @@ open class SScheduleView: UIView {
     /// 绘制其他行其他列
     ///
     /// - Parameter scrollView:
-    open func drawOtherRowOtherCol(scrollView:UIScrollView) {
+    open func drawOtherRowOtherCol(scrollCotentView:UIView) {
         contentView = UIView()
-        scrollView.addSubview(contentView)
+        scrollCotentView.addSubview(contentView)
         contentView.snp.makeConstraints{
-            $0.right.equalTo(self)
+            $0.right.equalTo(scrollCotentView)
             $0.top.bottom.equalTo(sideView)
             $0.left.equalTo(sideView.snp.right)
         }
@@ -382,12 +454,15 @@ open class SScheduleView: UIView {
             courseBackView.delegate = self
             courseBackView.setupUI(with: data)
             contentView.addSubview(courseBackView)
+            courseViewList.append(courseBackView)
             courseBackView.snp.makeConstraints{
                 $0.width.equalTo(notFirstEveryColumnsWidth)
                 $0.height.equalTo(notFirstEveryRowHeight * CGFloat(data.getSpan()))
                 $0.left.equalTo(contentView).offset(notFirstEveryColumnsWidth * CGFloat(data.getDay() - 1))
                 $0.top.equalTo(contentView).offset(notFirstEveryRowHeight * CGFloat(data.getJieci() - 1))
             }
+            courseBackView.courseInfoAlpha = self.courseViewAlpha
+            courseBackView.courseInfoIsCorner = self.courseViewIsCorner
         }
     }
     
@@ -424,6 +499,7 @@ extension SScheduleView:SScheduleScrollViewDelegate {
     }
 }
 
+
 // MARK: - 一些操作方法
 extension SScheduleView {
     
@@ -431,7 +507,7 @@ extension SScheduleView {
     ///
     /// - Parameter range: 随机数范围
     /// - Returns: 随机数
-    fileprivate func randomInRange(_ range: Range<Int>) -> Int {
+    open func randomInRange(_ range: Range<Int>) -> Int {
         let count = UInt32(range.upperBound - range.lowerBound)
         return  Int(arc4random_uniform(count)) + range.lowerBound
     }
@@ -442,7 +518,7 @@ extension SScheduleView {
     ///   - startTermDate: 本学期开始日期
     ///   - week: 指定周数
     /// - Returns: 月份
-    fileprivate func getMonth(startTermDate:Date , week:Int) -> String {
+    public func getMonth(startTermDate:Date , week:Int) -> String {
         var startDate = Int(startTermDate.timeIntervalSince1970)
         startDate = startDate + ((week - 1) * 7 * 24 * 3600)
         
@@ -462,7 +538,7 @@ extension SScheduleView {
     ///   - startTermDate: 本学期开始日期
     ///   - week: 指定周数
     /// - Returns: 每日日期
-    fileprivate func getDaysListForWeek(startTermDate:Date , week:Int) -> [String] {
+    public func getDaysListForWeek(startTermDate:Date , week:Int) -> [String] {
         var startDate = Int(startTermDate.timeIntervalSince1970)
         startDate = startDate + ((week - 1) * 7 * 24 * 3600)
         
